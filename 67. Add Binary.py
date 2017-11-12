@@ -14,9 +14,9 @@ class Solution(object):
     carry = 0
 
     for i in reversed(range(len(a))):
-        sum_digit = ( int(a[i]) + int(b[i]) + carry )
-        carry = sum_digit >> 1
-        ans = str(sum_digit & 1) + ans
+        carry += (a[i] == '1') + (b[i] == '1')
+        ans = str(carry & 1) + ans
+        carry >>= 1
 
     if carry > 0:
         ans = str(carry) + ans
